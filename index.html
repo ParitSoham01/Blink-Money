@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlinkMoney Clone: SIP, MF, FD &amp; Loan</title>
+    <meta name="description" content="High-fidelity clone of BlinkMoney, India's Liquid Wealth Account. Grow wealth with daily SIPs and access instant credit against investments.">
+    <meta name="keywords" content="liquid wealth, LAMF, loan against mutual funds, SIP, savings, India">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top-level Navigation -->
+    <header class="app-header">
+        <div class="header-container">
+            <a href="#" class="logo-link" aria-label="BlinkMoney Home">
+                <div class="logo-wrap">
+                    <svg viewBox="0 0 84.8 84.8" class="logo-svg" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="84.8" height="84.8" rx="42.4" fill="#9FE470"></rect>
+                        <path d="M51.4 27.3L51.3 75.1L45.2 41.9L32.8 54.4L33.6 9.6L39 39.7L51.4 27.3Z" fill="#2D7100"></path>
+                    </svg>
+                    <span class="logo-text-green">Blink</span><span class="logo-text-white">Money</span>
+                </div>
+            </a>
+            
+            <nav class="desktop-nav">
+                <a href="#save" class="nav-item">Save</a>
+                <a href="#borrow" class="nav-item">Borrow</a>
+                <a href="#how-it-works" class="nav-item">How It Works</a>
+                <a href="#faq" class="nav-item">FAQ</a>
+                <a href="#about" class="nav-item">About</a>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="#download" class="btn btn-primary btn-sm">Download now</a>
+                <button type="button" class="menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-nav-overlay">
+        <nav class="mobile-nav">
+            <a href="#save" class="mobile-nav-item">Save</a>
+            <a href="#borrow" class="mobile-nav-item">Borrow</a>
+            <a href="#how-it-works" class="mobile-nav-item">How It Works</a>
+            <a href="#faq" class="mobile-nav-item">FAQ</a>
+            <a href="#about" class="mobile-nav-item">About</a>
+            <a href="#download" class="btn btn-primary">Download now</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Slider Section -->
+        <section class="hero-section">
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <!-- Slide 1: Liquid Wealth Account -->
+                    <div class="hero-slide active">
+                        <div class="slide-content">
+                            <div class="badge-accent">India's First</div>
+                            <h1 class="hero-title">Liquid Wealth <br><span class="italic-highlight">Account</span></h1>
+                            <p class="hero-subtitle">One account. Save, grow, borrow, keep growing. Your wealth stays liquid, accessible anytime, anywhere.</p>
+                            <div class="badge-pill">Set-up in 4 mins · 100% digital</div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="orbit-visual">
+                                <div class="orbit-ring circle-spin-slow"></div>
+                                <div class="orbit-center">
+                                    <div class="wealth-avatar"></div>
+                                </div>
+                                <div class="orbit-slot" style="--angle: 0deg;"><span class="glass-tag">Stocks</span></div>
+                                <div class="orbit-slot" style="--angle: 72deg;"><span class="glass-tag">Gold</span></div>
+                                <div class="orbit-slot" style="--angle: 144deg;"><span class="glass-tag">FD</span></div>
+                                <div class="orbit-slot" style="--angle: 216deg;"><span class="glass-tag">Real Estate</span></div>
+                                <div class="orbit-slot" style="--angle: 288deg;"><span class="glass-tag">F&amp;O</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2: Grow & Borrow -->
+                    <div class="hero-slide">
+                        <div class="slide-content">
+                            <div class="badge-accent">Grow &amp; Borrow</div>
+                            <h2 class="hero-title">Compounding <br><span class="italic-highlight">Never Stops</span></h2>
+                            <p class="hero-subtitle">Your investments keep growing at ~15% p.a., even when you borrow cash against them instantly at 9.99% p.a.</p>
+                            <div class="hero-badges-row">
+                                <span class="glass-tag tag-green">Save @ 15% p.a.*</span>
+                                <span class="glass-tag tag-green">Borrow @ 9.99% p.a.*</span>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="infinity-track-wrap">
+                                <div class="infinity-loop-svg-container">
+                                    <svg viewBox="0 0 300 120" class="infinity-svg">
+                                        <!-- Infinity path -->
+                                        <path d="M 75,60 C 20,110 20,10 75,60 C 130,110 230,110 225,60 C 220,10 120,10 75,60 Z" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="6" />
+                                        <path d="M 75,60 C 20,110 20,10 75,60 C 130,110 230,110 225,60 C 220,10 120,10 75,60 Z" fill="none" class="infinity-path-glow" stroke="#9FE870" stroke-width="2" />
+                                    </svg>
+                                    <div class="infinity-ball ball-green"></div>
+                                    <div class="infinity-ball ball-yellow"></div>
+                                    <div class="infinity-ball ball-grey"></div>
+                                </div>
+                                <div class="floating-badge text-center">
+                                    <span class="glass-tag tag-green">✦ Grow ✦ Borrow ✦ Still Grow</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3: Simple 1-Click Investing -->
+                    <div class="hero-slide">
+                        <div class="slide-content">
+                            <div class="badge-accent">No Complexity</div>
+                            <h2 class="hero-title">Investing in <br><span class="italic-highlight">One Tap</span></h2>
+                            <p class="hero-subtitle">One app, one tap. A diversified portfolio split across Stocks, FD, and Gold automatically managed for you.</p>
+                            <div class="badge-pill">Starts at ₹21/day · Auto-allocation</div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="phone-mockup">
+                                <div class="phone-inner">
+                                    <div class="portfolio-card">
+                                        <div class="card-header">
+                                            <span>Smart Portfolio</span>
+                                            <span class="compounding-badge">Daily Compounding</span>
+                                        </div>
+                                        <div class="allocation-list">
+                                            <div class="allocation-item">
+                                                <div class="asset-info">
+                                                    <span class="dot" style="background: #3A4F6A;"></span>
+                                                    <span>Stocks</span>
+                                                </div>
+                                                <span class="weight font-bold">65.14%</span>
+                                            </div>
+                                            <div class="allocation-item">
+                                                <div class="asset-info">
+                                                    <span class="dot" style="background: #8B6A4E;"></span>
+                                                    <span>FD (Debt)</span>
+                                                </div>
+                                                <span class="weight font-bold">14.50%</span>
+                                            </div>
+                                            <div class="allocation-item">
+                                                <div class="asset-info">
+                                                    <span class="dot" style="background: #C2B06F;"></span>
+                                                    <span>Gold</span>
+                                                </div>
+                                                <span class="weight font-bold">8.75%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mockup-indicator">
+                                        <span class="glass-tag">Stocks + FD + Gold</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4: Cash in Minutes (LAMF) -->
+                    <div class="hero-slide">
+                        <div class="slide-content">
+                            <div class="badge-accent">Instant Liquidity</div>
+                            <h2 class="hero-title">Use Your <br><span class="italic-highlight">Money Today</span></h2>
+                            <p class="hero-subtitle">Pledge your portfolio digitally and get instant cash in your bank in minutes. No selling, no tax load, no paperwork.</p>
+                            <div class="hero-badges-row">
+                                <span class="glass-tag tag-green">Zero Selling</span>
+                                <span class="glass-tag tag-green">Keep Compounding</span>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="cash-visual">
+                                <div class="cash-card">
+                                    <div class="cash-card-glow"></div>
+                                    <span class="cash-title">Instant Credit Unlocked</span>
+                                    <span class="cash-rate">9.99% p.a.*</span>
+                                    <span class="cash-subtext">No EMI, interest runs only on what you use</span>
+                                </div>
+                                <div class="floating-badge" style="top: 10%; left: -10%;">
+                                    <span class="glass-tag tag-green">Cash in 5 Mins</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5: Better than FD -->
+                    <div class="hero-slide">
+                        <div class="slide-content">
+                            <div class="badge-accent">High Returns</div>
+                            <h2 class="hero-title">Better Than <br><span class="italic-highlight">Your Dad's FD</span></h2>
+                            <p class="hero-subtitle">Why settle for 3% in savings or 6% in locked FDs? Grow your wealth at ~15% p.a.* historical returns with expert-managed portfolios.</p>
+                            <div class="badge-pill">Expert-managed · Zero lock-in · No penalties</div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="comparison-visual">
+                                <div class="comp-box dad-fd">
+                                    <span class="box-label">Dad's FD</span>
+                                    <span class="box-val text-red">6-7% p.a.</span>
+                                    <span class="box-sub">Locked. Inflation loss.</span>
+                                </div>
+                                <div class="comp-box blink-wealth">
+                                    <span class="box-label">BlinkMoney</span>
+                                    <span class="box-val text-green">~15% p.a.*</span>
+                                    <span class="box-sub">Liquid. Compounding.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carousel Controls -->
+                <div class="carousel-indicators">
+                    <span class="dot-indicator active" data-slide="0"></span>
+                    <span class="dot-indicator" data-slide="1"></span>
+                    <span class="dot-indicator" data-slide="2"></span>
+                    <span class="dot-indicator" data-slide="3"></span>
+                    <span class="dot-indicator" data-slide="4"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partner Marquee Section -->
+        <section class="partner-marquee-section">
+            <div class="marquee-title">Regulated &amp; Trusted Partners</div>
+            <div class="marquee-container">
+                <div class="marquee-content">
+                    <span>ICICI PRUDENTIAL MUTUAL FUND</span>
+                    <span>AXIS MUTUAL FUND</span>
+                    <span>SBI MUTUAL FUND</span>
+                    <span>DSP MUTUAL FUND</span>
+                    <span>MF CENTRAL</span>
+                    <span>ONDC</span>
+                    <span>SOUTH INDIAN BANK</span>
+                </div>
+                <!-- Duplicate for seamless scroll -->
+                <div class="marquee-content" aria-hidden="true">
+                    <span>ICICI PRUDENTIAL MUTUAL FUND</span>
+                    <span>AXIS MUTUAL FUND</span>
+                    <span>SBI MUTUAL FUND</span>
+                    <span>DSP MUTUAL FUND</span>
+                    <span>MF CENTRAL</span>
+                    <span>ONDC</span>
+                    <span>SOUTH INDIAN BANK</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Daily SIP Calculator Section -->
+        <section id="save" class="calculator-section">
+            <div class="section-container">
+                <div class="calculator-header">
+                    <div class="section-badge">Save &amp; Compound</div>
+                    <h2 class="section-title">Daily SIP <span class="text-green">Calculator</span></h2>
+                    <p class="section-subtitle">Visualize how a small daily amount grows over time with a 15% p.a.* return rate and a 10% annual step-up as your income grows.</p>
+                </div>
+
+                <div class="calculator-grid">
+                    <div class="calculator-card glass-panel">
+                        <div class="input-group">
+                            <div class="slider-label-row">
+                                <span>Daily Investment</span>
+                                <span class="val-display" id="daily-sip-val">₹300</span>
+                            </div>
+                            <input type="range" id="daily-sip" min="21" max="2000" step="10" value="300" class="input-slider">
+                            <div class="slider-bounds">
+                                <span>₹21</span>
+                                <span>₹2,000</span>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <div class="slider-label-row">
+                                <span>Years to Grow</span>
+                                <span class="val-display" id="years-val">30 years</span>
+                            </div>
+                            <input type="range" id="years" min="1" max="40" step="1" value="30" class="input-slider">
+                            <div class="slider-bounds">
+                                <span>1 Yr</span>
+                                <span>40 Yrs</span>
+                            </div>
+                        </div>
+
+                        <div class="sip-summary-box">
+                            <p class="summary-text" id="sip-summary-text">Your SIP: ₹300/day now → ₹4.8K/day in Year 30</p>
+                            <span class="disclaimer-text">Assumptions: 15% p.a.* return rate · 10% annual salary step-up.</span>
+                        </div>
+                    </div>
+
+                    <div class="calculator-results-card glass-panel">
+                        <div class="total-wealth-container">
+                            <span class="label">Accumulated Wealth</span>
+                            <span class="total-wealth-val" id="total-wealth">₹12.11 Cr</span>
+                        </div>
+                        
+                        <div class="breakdown-row">
+                            <div class="breakdown-item">
+                                <span class="label">Total Invested</span>
+                                <span class="val" id="total-invested">₹1.80 Cr</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="label">Wealth Gained</span>
+                                <span class="val text-green" id="wealth-gained">₹10.31 Cr</span>
+                            </div>
+                        </div>
+
+                        <!-- Interactive CSS Chart representation -->
+                        <div class="chart-container">
+                            <div class="chart-bar-wrap">
+                                <span class="bar-label">Invested</span>
+                                <div class="chart-bar bar-invested" id="bar-invested-el" style="height: 15%;"></div>
+                                <span class="bar-val" id="bar-invested-val">₹1.80 Cr</span>
+                            </div>
+                            <div class="chart-bar-wrap">
+                                <span class="bar-label">Wealth</span>
+                                <div class="chart-bar bar-gained" id="bar-gained-el" style="height: 100%;"></div>
+                                <span class="bar-val text-green" id="bar-gained-val">₹12.11 Cr</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why BlinkMoney Comparison Section -->
+        <section class="comparison-section">
+            <div class="section-container">
+                <div class="text-center mb-12">
+                    <div class="section-badge">Comparison</div>
+                    <h2 class="section-title">Naye India Ka <span class="text-green">Naya Money System</span></h2>
+                    <p class="section-subtitle">How BlinkMoney stacks up against the old-school banking system.</p>
+                </div>
+
+                <div class="table-container glass-panel">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Old Banking System</th>
+                                <th class="highlight-col">BlinkMoney System</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="feature-name">Save &amp; Grow</td>
+                                <td>6-7% p.a. in FD only (Locked, loses to inflation)</td>
+                                <td class="highlight-col text-green font-bold">~15% p.a.* in Stocks + FD + Gold basket (Daily compounding)</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name">Borrow</td>
+                                <td>14-42% p.a. on credit cards or personal loans</td>
+                                <td class="highlight-col text-green font-bold">9.99% p.a.* loan (Interest only on what you use)</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name">Ease of Use</td>
+                                <td>Branch visits, piles of paperwork, up to 4 days wait</td>
+                                <td class="highlight-col text-green font-bold">100% digital, setup in 4 minutes, zero lock-in</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name">Inclusivity</td>
+                                <td>Requires high minimum balance, perfect credit history</td>
+                                <td class="highlight-col text-green font-bold">Starts at ₹21/day. No income proof, no credit score check</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Who It's For Section (Interactive Tabs) -->
+        <section class="audience-section">
+            <div class="section-container">
+                <div class="text-center mb-12">
+                    <div class="section-badge">Who It's For</div>
+                    <h2 class="section-title">India's Aspiring <span class="text-green">Rich</span></h2>
+                    <p class="section-subtitle">A simplified money system designed to fit your stage, your pace, and your lifestyle.</p>
+                </div>
+
+                <div class="tabs-container">
+                    <div class="tabs-header">
+                        <button type="button" class="tab-btn active" data-tab="starting">Just starting out?</button>
+                        <button type="button" class="tab-btn" data-tab="investing">Already investing?</button>
+                        <button type="button" class="tab-btn" data-tab="managed">Need it managed?</button>
+                        <button type="button" class="tab-btn" data-tab="cash">Want instant cash?</button>
+                    </div>
+
+                    <div class="tabs-content">
+                        <!-- Tab 1: Starting Out -->
+                        <div class="tab-pane active" id="starting">
+                            <div class="tab-grid">
+                                <div class="tab-info">
+                                    <h3 class="tab-title">₹21/day · Zero Barriers</h3>
+                                    <p class="tab-desc">A simplified money system that starts at just ₹21/day. No lumpsum pressure, no massive savings needed. Start small, build consistency, and let daily compounding work its magic.</p>
+                                    <ul class="tab-bullets">
+                                        <li>Start with spare change</li>
+                                        <li>Auto-invested every morning</li>
+                                        <li>Build a regular investing habit</li>
+                                    </ul>
+                                </div>
+                                <div class="tab-visual-box">
+                                    <div class="stat-badge">
+                                        <span class="number">₹21</span>
+                                        <span class="label">Minimum daily start</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 2: Already Investing -->
+                        <div class="tab-pane" id="investing">
+                            <div class="tab-grid">
+                                <div class="tab-info">
+                                    <h3 class="tab-title">Your Portfolio is Your Credit Line</h3>
+                                    <p class="tab-desc">Why sell your investments for short-term emergency cash and trigger taxes? Keep your money compounding. Borrow against your mutual funds at 9.99% p.a. instantly.</p>
+                                    <ul class="tab-bullets">
+                                        <li>Zero selling of mutual funds</li>
+                                        <li>Compounding remains completely intact</li>
+                                        <li>Taxes and exit loads avoided</li>
+                                    </ul>
+                                </div>
+                                <div class="tab-visual-box">
+                                    <div class="stat-badge">
+                                        <span class="number">9.99%</span>
+                                        <span class="label">Borrowing interest rate p.a.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 3: Need it Managed -->
+                        <div class="tab-pane" id="managed">
+                            <div class="tab-grid">
+                                <div class="tab-info">
+                                    <h3 class="tab-title">Diversified &amp; Expert-Managed</h3>
+                                    <p class="tab-desc">Don't waste time choosing mutual funds or rebalancing portfolios. Professional fund managers split your daily savings across Stocks, FDs, and Gold for stable, high returns.</p>
+                                    <ul class="tab-bullets">
+                                        <li>Auto-allocated across 3 asset classes</li>
+                                        <li>Professional risk management</li>
+                                        <li>Set once, auto-invest for life</li>
+                                    </ul>
+                                </div>
+                                <div class="tab-visual-box">
+                                    <div class="stat-badge">
+                                        <span class="number">15%</span>
+                                        <span class="label">Historical returns p.a.*</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 4: Want Cash -->
+                        <div class="tab-pane" id="cash">
+                            <div class="tab-grid">
+                                <div class="tab-info">
+                                    <h3 class="tab-title">Cash in Bank in 5 Minutes</h3>
+                                    <p class="tab-desc">Need money for a medical emergency, business opportunity, or down payment? Double tap, pledge your portfolio, and transfer cash to your bank account instantly.</p>
+                                    <ul class="tab-bullets">
+                                        <li>100% digital digital process</li>
+                                        <li>Disbursal within minutes</li>
+                                        <li>No branch visits, no salary slips</li>
+                                    </ul>
+                                </div>
+                                <div class="tab-visual-box">
+                                    <div class="stat-badge">
+                                        <span class="number">5 Min</span>
+                                        <span class="label">Pledge to cash payout</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Features Section -->
+        <section class="features-section">
+            <div class="section-container">
+                <div class="text-center mb-12">
+                    <div class="section-badge">Smart Wealth</div>
+                    <h2 class="section-title">Why Let Your Money <span class="text-green">Sleep at 3%?</span></h2>
+                    <p class="section-subtitle">A smarter money system built to optimize growth and maintain full liquidity.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card glass-panel">
+                        <div class="icon-wrap">
+                            <svg viewBox="0 0 24 24" class="feat-icon" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" fill="none" stroke="#9FE870" stroke-width="2"/>
+                                <path d="M12 6v6l4 2" stroke="#9FE870" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3>5 Assets. 1 Tap. Every Day.</h3>
+                        <p>Stocks, FD, Gold, Real Estate, and F&amp;O automatically allocated daily. No complex decisions or manual rebalancing required.</p>
+                    </div>
+
+                    <div class="feature-card glass-panel">
+                        <div class="icon-wrap">
+                            <svg viewBox="0 0 24 24" class="feat-icon" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" fill="none" stroke="#9FE870" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3>Expert-Managed</h3>
+                        <p>Professional fund managers handle allocations and strategy. You set the daily amount, we optimize your portfolio for target returns.</p>
+                    </div>
+
+                    <div class="feature-card glass-panel">
+                        <div class="icon-wrap">
+                            <svg viewBox="0 0 24 24" class="feat-icon" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="3" y="11" width="18" height="11" rx="2" fill="none" stroke="#9FE870" stroke-width="2"/>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4" fill="none" stroke="#9FE870" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3>Zero Lock-in. Always Yours.</h3>
+                        <p>No penalties, no waiting periods. Pause your SIP, change your amounts, or withdraw cash instantly whenever you want.</p>
+                    </div>
+
+                    <div class="feature-card glass-panel">
+                        <div class="icon-wrap">
+                            <svg viewBox="0 0 24 24" class="feat-icon" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" fill="none" stroke="#9FE870" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M22 4L12 14.01l-3-3" fill="none" stroke="#9FE870" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3>Invested in 4 Minutes</h3>
+                        <p>Download the app, complete dynamic digital KYC (PAN + Aadhaar), set your auto-invest amount, and start your wealth journey today.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loan Against Mutual Funds (LAMF) Section -->
+        <section id="borrow" class="lamf-section">
+            <div class="section-container">
+                <div class="calculator-grid">
+                    <div class="lamf-info-panel">
+                        <div class="section-badge">Instant Loans</div>
+                        <h2 class="section-title">Why Borrow From a Bank when <span class="text-green">You Can Borrow from Yourself?</span></h2>
+                        <p class="section-paragraph">Unlock instant cash against your investments at a flat 9.99% p.a.* rate. No selling required, which means compounding continues and you avoid capital gains tax.</p>
+                        
+                        <div class="lamf-features-list">
+                            <div class="lamf-feature-item">
+                                <span class="bullet-check">✓</span>
+                                <div>
+                                    <h4>Zero Selling. Zero Tax.</h4>
+                                    <p>Funds remain invested. We place a digital lien. Repay, and everything is released untouched.</p>
+                                </div>
+                            </div>
+                            <div class="lamf-feature-item">
+                                <span class="bullet-check">✓</span>
+                                <div>
+                                    <h4>No Credit Score Check</h4>
+                                    <p>Your portfolio is your collateral. No salary slips or income proof required.</p>
+                                </div>
+                            </div>
+                            <div class="lamf-feature-item">
+                                <span class="bullet-check">✓</span>
+                                <div>
+                                    <h4>Pay Only for What You Use</h4>
+                                    <p>Interest runs only on the exact cash you draw. No fixed EMIs or foreclosure charges.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lamf-calc-panel glass-panel">
+                        <h3>Check Your Credit Limit</h3>
+                        <p class="sub">Drag the slider to input your current mutual fund value and see your instant credit limit.</p>
+                        
+                        <div class="input-group">
+                            <div class="slider-label-row">
+                                <span>Portfolio Value</span>
+                                <span class="val-display" id="portfolio-val">₹5,00,000</span>
+                            </div>
+                            <input type="range" id="portfolio-slider" min="10000" max="10000000" step="10000" value="500000" class="input-slider">
+                            <div class="slider-bounds">
+                                <span>₹10 K</span>
+                                <span>₹1 Cr</span>
+                            </div>
+                        </div>
+
+                        <div class="credit-limit-output-box">
+                            <span class="label">Unlocked Credit Line Limit</span>
+                            <span class="limit-val" id="credit-limit-val">₹4,00,000</span>
+                            <span class="subtext">Up to 80% LTV (Loan-to-Value) against mutual funds</span>
+                        </div>
+
+                        <div class="loan-benefits-grid">
+                            <div class="benefit-tag">Flat 9.99% p.a.*</div>
+                            <div class="benefit-tag">Payout in Minutes</div>
+                            <div class="benefit-tag">Zero Foreclosure Fees</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="steps-section">
+            <div class="section-container">
+                <div class="text-center mb-12">
+                    <div class="section-badge">Process</div>
+                    <h2 class="section-title">4 Steps, <span class="text-green">That's All</span></h2>
+                    <p class="section-subtitle">From download to an active compounding portfolio and credit line in minutes.</p>
+                </div>
+
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-num">01</div>
+                        <h3>Download BlinkMoney</h3>
+                        <p>Available on Android &amp; iOS. Secure and encrypted download.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-num">02</div>
+                        <h3>Complete KYC in 2 Mins</h3>
+                        <p>100% digital paperless verification using your PAN + Aadhaar. No branch visits.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-num">03</div>
+                        <h3>Set Daily Saving Amount</h3>
+                        <p>Start auto-saving from ₹21/day in a diversified basket of Stocks + FD + Gold.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-num">04</div>
+                        <h3>Credit Limit Unlocked</h3>
+                        <p>Instantly access up to 80% cash line against your balance while it continues compounding.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section">
+            <div class="section-container">
+                <div class="text-center mb-12">
+                    <div class="section-badge">Testimonials</div>
+                    <h2 class="section-title">New Gen is Loving the <span class="text-green">New Money System</span></h2>
+                    <p class="section-subtitle">Here is what early adopters and wealth builders have to say about BlinkMoney.</p>
+                </div>
+
+                <div class="testimonials-slider-container">
+                    <div class="testimonials-track" id="testimonials-track-el">
+                        <!-- Card 1 -->
+                        <div class="testimonial-card glass-panel">
+                            <p class="quote">“I kept ₹2L in my savings account for 3 years earning 3%. Moved it to BlinkMoney 8 months ago, it’s already crossed ₹2.4L. Stocks + FD + Gold, all automatic. I wish I’d started sooner.”</p>
+                            <div class="author-info">
+                                <span class="author-name">Riya S.</span>
+                                <span class="author-meta">UX Designer, 26 · Mumbai</span>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="testimonial-card glass-panel">
+                            <p class="quote">“My dad needed surgery and I had ₹4,000. Pledged on BlinkMoney at 11 PM, had ₹90K before midnight. SIP didn’t miss a day.”</p>
+                            <div class="author-info">
+                                <span class="author-name">Rohan Mehta</span>
+                                <span class="author-meta">Software Engineer, 24 · Bengaluru</span>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="testimonial-card glass-panel">
+                            <p class="quote">“I never understood which mutual fund to pick. BlinkMoney just asks how much, I set ₹200/day and forgot about it. My portfolio is diversified across 3 assets and tracking close to 15% returns.”</p>
+                            <div class="author-info">
+                                <span class="author-name">Aditya K.</span>
+                                <span class="author-meta">Software Engineer, 29 · Bengaluru</span>
+                            </div>
+                        </div>
+                        <!-- Card 4 -->
+                        <div class="testimonial-card glass-panel">
+                            <p class="quote">“Used to pay 36% on credit card without realising. BlinkMoney at 9.99% is a different universe. Investments stay intact.”</p>
+                            <div class="author-info">
+                                <span class="author-name">Priya Sharma</span>
+                                <span class="author-meta">Freelance Designer, 26 · Mumbai</span>
+                            </div>
+                        </div>
+                        <!-- Card 5 -->
+                        <div class="testimonial-card glass-panel">
+                            <p class="quote">“As a freelancer my income is unpredictable. ₹100/day on slow months, ₹500 on good ones, total flexibility. 6 months in, I’ve built a real portfolio for the first time.”</p>
+                            <div class="author-info">
+                                <span class="author-name">Priya M.</span>
+                                <span class="author-meta">Freelance Consultant, 31 · Delhi</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq-section">
+            <div class="section-container">
+                <div class="text-center mb-12">
+                    <div class="section-badge">FAQ</div>
+                    <h2 class="section-title">Good Questions. <span class="text-green">Honest Answers.</span></h2>
+                    <p class="section-subtitle">Everything you need to know about the liquid wealth system.</p>
+                </div>
+
+                <div class="faq-list">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item glass-panel">
+                        <button class="faq-question">
+                            <span>What is BlinkMoney?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>BlinkMoney is India's first Liquid Wealth Account. It does two things: grows your money in daily SIPs across stocks, FDs, and gold in one click for around 15% p.a.* historical returns, AND gives you instant cash at 9.99% p.a.* against your investments whenever you need it. So your money never stops compounding, and you can still use it anytime.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-item glass-panel">
+                        <button class="faq-question">
+                            <span>How do I get started?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>It's simple. First, download the app and set up a daily auto-invest SIP, starting from just ₹21. Second, that money gets professionally managed and split smartly across Stocks, FDs, and gold. Third, once you've built a portfolio, you can borrow up to 80% of it instantly at 9.99% p.a.* with zero paperwork. Your investments keep earning while you use the credit.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item glass-panel">
+                        <button class="faq-question">
+                            <span>Is BlinkMoney safe?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes. BlinkMoney partners with regulated institutions for investing and lending services. Your investments are held with SEBI-registered partners (like ICICI Prudential Mutual Fund, Axis Mutual Fund, etc.) in your name, not with us. Plus, there is zero lock-in, so you can withdraw anytime. Your money is as safe as a regular mutual fund.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="faq-item glass-panel">
+                        <button class="faq-question">
+                            <span>Is BlinkMoney for ME?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>BlinkMoney is built for Gen Z, freelancers, creators, students, salary employees, and business owners who want their money working hard. If you have a PAN, Aadhaar, and a bank account, you're in. We support flexible daily savings with no salary slip or credit score requirements.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 5 -->
+                    <div class="faq-item glass-panel">
+                        <button class="faq-question">
+                            <span>What kind of returns can I expect?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>We split your money smartly across three asset classes—stocks for growth, fixed deposits for stability, and gold for protection. This portfolio has historically delivered around 15% p.a.* returns over the last 5 years. While past performance does not guarantee future results, it beats the 3% p.a. your traditional savings account offers.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 6 -->
+                    <div class="faq-item glass-panel">
+                        <button class="faq-question">
+                            <span>What is LAMF and how does it work?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>LAMF stands for Loan Against Mutual Funds. It's how you access cash against your investments without selling them. You pledge your portfolio digitally (takes minutes), and we lend you up to 80% of its value at 9.99% p.a.*. Your investments remain active, keep compounding at 15% p.a.*, and you only pay 9.99% p.a.* on what you borrow.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 7 -->
+                    <div class="faq-item glass-panel">
+                        <button class="faq-question">
+                            <span>Are there any hidden charges on BlinkMoney?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>No. BlinkMoney maintains full transparency. There are no hidden fees, surprise deductions, or buried charges. All costs related to your Mutual Fund SIP or Loan Against Mutual Funds are clearly shown before you confirm a transaction.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Callout Section -->
+        <section id="download" class="cta-section">
+            <div class="section-container">
+                <div class="cta-card glass-panel">
+                    <div class="cta-glow"></div>
+                    <h2>You didn't have to choose.<br>You just needed <span class="text-green">the right system.</span></h2>
+                    <p>Start building wealth today and unlock liquidity the moment you need it, without ever pausing, selling, or worrying.</p>
+                    <div class="cta-stats">
+                        <div class="cta-stat">
+                            <span class="val">~15% p.a.*</span>
+                            <span class="lbl">Returns</span>
+                        </div>
+                        <div class="cta-stat">
+                            <span class="val">9.99% p.a.*</span>
+                            <span class="lbl">Credit line</span>
+                        </div>
+                        <div class="cta-stat">
+                            <span class="val">₹21/day</span>
+                            <span class="lbl">To start</span>
+                        </div>
+                        <div class="cta-stat">
+                            <span class="val">Zero</span>
+                            <span class="lbl">Lock-in</span>
+                        </div>
+                    </div>
+                    <div class="cta-actions">
+                        <a href="#" class="btn btn-primary">Download Android App</a>
+                        <a href="#" class="btn btn-secondary">Download iOS App</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- App Footer -->
+    <footer id="about" class="app-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="logo-wrap mb-4">
+                    <svg viewBox="0 0 84.8 84.8" class="logo-svg" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="84.8" height="84.8" rx="42.4" fill="#9FE470"></rect>
+                        <path d="M51.4 27.3L51.3 75.1L45.2 41.9L32.8 54.4L33.6 9.6L39 39.7L51.4 27.3Z" fill="#2D7100"></path>
+                    </svg>
+                    <span class="logo-text-green">Blink</span><span class="logo-text-white">Money</span>
+                </div>
+                <p class="footer-description">Liquid wealth. Grow daily, borrow without selling. One app · from ₹21/day · instant credit line.</p>
+                <div class="footer-certification">
+                    <span class="cert-logo">ISO/IEC 27001:2022 Certified</span>
+                </div>
+            </div>
+
+            <div class="footer-links-grid">
+                <div class="footer-links-col">
+                    <h4>Product</h4>
+                    <a href="#save">Daily SIP</a>
+                    <a href="#borrow">Instant Loan</a>
+                    <a href="#how-it-works">How it works</a>
+                    <a href="#faq">FAQ</a>
+                </div>
+                <div class="footer-links-col">
+                    <h4>Company</h4>
+                    <a href="#">About Us</a>
+                    <a href="#">Team</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Contact Us</a>
+                </div>
+                <div class="footer-links-col">
+                    <h4>Legal &amp; Help</h4>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Account Deletion</a>
+                    <a href="#">Security</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-disclosure">
+                <p><strong>Mutual Fund Distributor:</strong> Capline Ventures Private Limited (AMFI-registered Mutual Fund Distributor) | ARN: 330047 | Current Validity till 28-May-2028 | Scheme Documents | Commission Disclosure</p>
+                <p><strong>Address:</strong> G-502 Plot-6 Sec-9 Dara Enclave AWHO, Darave, Thane 400706, Maharashtra. (CIN: U62099MH2024PTC435972)</p>
+                <p><strong>*T&amp;C Apply:</strong> Mutual Funds are subject to market risk, read all scheme related documents carefully. Investment returns mentioned are based on the last 5 year historical returns. Past performance is not indicative of future performance. Borrowing rates are linked to RBI REPO rate. Please check the latest offer on the app. Assuming an investment period of 30 years with 10% annual step-up, withdrawals start after the investment period is completed. Monthly withdrawals are based on the 4% rule.</p>
+                <p>Registration granted by SEBI, enlistment with BSE and certification from NISM in no way guarantee performance of the intermediary or provide any assurance of returns to investors.</p>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2026 Capline Ventures Private Limited. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
