@@ -368,7 +368,7 @@ section {
 /* Stats Cards Grid styling (Right Column) */
 .stats-cards-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     width: 100%;
 }
@@ -1457,6 +1457,31 @@ section {
         padding: 60px 20px;
     }
 
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .hero-left-col {
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-subtext-main {
+        margin: 0 auto;
+    }
+
+    .hero-ctas-row {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .hero-section {
+        padding-top: 60px;
+        padding-bottom: 80px;
+    }
+
     .hero-slide {
         grid-template-columns: 1fr;
         height: auto;
@@ -1497,6 +1522,25 @@ section {
 @media (max-width: 768px) {
     .desktop-nav {
         display: none;
+    }
+
+    .hero-title-main {
+        font-size: 38px;
+    }
+
+    .stats-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .hero-ctas-row {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+    }
+
+    .hero-ctas-row .btn {
+        width: 100%;
     }
 
     .menu-toggle {
