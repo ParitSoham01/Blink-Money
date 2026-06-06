@@ -1828,7 +1828,7 @@ section {
 
 .leadership-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 28px;
     width: 100%;
 }
