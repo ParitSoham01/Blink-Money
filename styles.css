@@ -1821,3 +1821,113 @@ section {
     }
 }
 
+/* Leadership & Founders Section */
+.leadership-section {
+    border-bottom: 1px solid var(--border-glass);
+}
+
+.leadership-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    width: 100%;
+}
+
+.leader-card {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    padding: 24px;
+    transition: var(--transition-smooth);
+}
+
+.leader-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(159, 232, 112, 0.25);
+    box-shadow: 0 10px 25px rgba(159, 232, 112, 0.05);
+}
+
+.leader-image-wrap {
+    width: 130px;
+    height: 130px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border-glass);
+    flex-shrink: 0;
+}
+
+.leader-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.leader-card:hover .leader-img {
+    transform: scale(1.05);
+}
+
+.leader-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.leader-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.leader-header h3 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.leader-title {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.leader-quote {
+    font-size: 13px;
+    color: var(--text-primary);
+    font-style: italic;
+    line-height: 1.55;
+    position: relative;
+    border-left: 2px solid var(--neon-green);
+    padding-left: 12px;
+}
+
+.leader-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Responsive Leadership Section */
+@media (max-width: 992px) {
+    .leadership-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
+@media (max-width: 576px) {
+    .leader-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .leader-quote {
+        border-left: none;
+        border-top: 1.5px solid var(--neon-green);
+        padding-left: 0;
+        padding-top: 8px;
+    }
+}
+
