@@ -1827,3 +1827,103 @@ section {
         gap: 32px;
     }
 }
+
+/* -------------------------------------------------------------------------
+   Premium UI Enhancements (Scroll Reveal, Tilt, Particles, Video Background)
+   ------------------------------------------------------------------------- */
+
+/* Video Background */
+.video-bg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.video-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.22; /* Faded to look extremely premium and preserve text contrast */
+    filter: brightness(0.35) contrast(1.15) saturate(0.85);
+}
+
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(12, 25, 8, 0.4) 0%, rgba(7, 7, 7, 0.95) 75%);
+}
+
+/* Particles Canvas */
+#particles-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Scroll Reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active-reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 3D Tilt Card Base */
+.tilt-card {
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease-out, border-color 0.4s, box-shadow 0.4s;
+    will-change: transform;
+}
+
+/* Accent Underline Animations for Nav links */
+.nav-item {
+    position: relative;
+}
+.nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background-color: var(--neon-green);
+    transition: width 0.3s ease;
+}
+.nav-item:hover::after {
+    width: 100%;
+}
+
+/* Ambient Pulse for numeric updates */
+.pulse-highlight {
+    animation: text-pulse 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes text-pulse {
+    0% {
+        transform: scale(1);
+        text-shadow: 0 0 0px rgba(159, 232, 112, 0);
+    }
+    50% {
+        transform: scale(1.05);
+        text-shadow: 0 0 15px rgba(159, 232, 112, 0.6);
+        color: #fff;
+    }
+    100% {
+        transform: scale(1);
+        text-shadow: 0 0 0px rgba(159, 232, 112, 0);
+    }
+}
+

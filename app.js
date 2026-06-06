@@ -10,6 +10,11 @@ document.addEventListener("DOMContentLoaded", () => {
     initLamfCalculator();
     initTestimonialsAutoscroll();
     initFaqAccordion();
+    
+    // Premium UI Enhancements
+    initParticlesBackground();
+    initScrollReveal();
+    init3dTilt();
 });
 
 /* 1. Mobile Navigation Menu Toggle */
@@ -38,7 +43,7 @@ function initMobileNav() {
     });
 }
 
-/* 2. Hero Slideshow / Carousel Carousel */
+/* 2. Hero Slideshow / Carousel */
 function initHeroCarousel() {
     const slides = document.querySelectorAll(".hero-slide");
     const dots = document.querySelectorAll(".dot-indicator");
@@ -76,6 +81,29 @@ function initHeroCarousel() {
     startAutoSlide();
 }
 
+/* Helper: Animate numeric displays smoothly */
+function animateValue(element, start, end, duration, formatFn) {
+    if (!element) return;
+    const startRange = start;
+    const endRange = end;
+    let startTimestamp = null;
+    
+    // Add glowing pulse highlight
+    element.classList.add("pulse-highlight");
+    setTimeout(() => element.classList.remove("pulse-highlight"), 400);
+
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const val = progress * (endRange - startRange) + startRange;
+        element.textContent = formatFn(val);
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        }
+    };
+    window.requestAnimationFrame(step);
+}
+
 /* 3. Daily SIP Calculator with 10% Step-Up and 15% p.a. compounding */
 function initSipCalculator() {
     const dailySipInput = document.getElementById("daily-sip");
@@ -95,6 +123,11 @@ function initSipCalculator() {
 
     if (!dailySipInput || !yearsInput) return;
 
+    // Track previous values for scroll-up ticker animations
+    let prevWealth = 0;
+    let prevInvested = 0;
+    let prevGained = 0;
+
     function formatCurrency(num) {
         if (num >= 10000000) { // Crore
             return "₹" + (num / 10000000).toFixed(2) + " Cr";
@@ -107,7 +140,7 @@ function initSipCalculator() {
         }
     }
 
-    function calculateSIP() {
+    function calculateSIP(isInitial = false) {
         const dailyAmount = parseFloat(dailySipInput.value);
         const years = parseInt(yearsInput.value);
         const stepUp = 0.10; // 10% annual salary step-up
@@ -131,21 +164,35 @@ function initSipCalculator() {
 
         const wealthGained = Math.max(0, currentBalance - totalInvested);
 
-        // Update displays
+        // Update basic text nodes
         dailySipVal.textContent = "₹" + Math.round(dailyAmount).toLocaleString("en-IN");
         yearsVal.textContent = years + " years";
-        totalWealthVal.textContent = formatCurrency(currentBalance);
-        totalInvestedVal.textContent = formatCurrency(totalInvested);
-        wealthGainedVal.textContent = formatCurrency(wealthGained);
 
         // Update SIP summary description text
         const endDaily = dailyAmount * Math.pow(1 + stepUp, years - 1);
         const endDailyStr = endDaily >= 1000 ? (endDaily / 1000).toFixed(1) + " K" : Math.round(endDaily);
         sipSummaryText.textContent = `Your SIP: ₹${Math.round(dailyAmount)}/day now → ₹${endDailyStr}/day in Year ${years}`;
 
-        // Update visual chart bars
-        barInvestedVal.textContent = formatCurrency(totalInvested);
-        barGainedVal.textContent = formatCurrency(currentBalance);
+        // Animate key numbers smoothly
+        if (isInitial) {
+            totalWealthVal.textContent = formatCurrency(currentBalance);
+            totalInvestedVal.textContent = formatCurrency(totalInvested);
+            wealthGainedVal.textContent = formatCurrency(wealthGained);
+            
+            barInvestedVal.textContent = formatCurrency(totalInvested);
+            barGainedVal.textContent = formatCurrency(currentBalance);
+        } else {
+            animateValue(totalWealthVal, prevWealth, currentBalance, 250, formatCurrency);
+            animateValue(totalInvestedVal, prevInvested, totalInvested, 250, formatCurrency);
+            animateValue(wealthGainedVal, prevGained, wealthGained, 250, formatCurrency);
+            
+            animateValue(barInvestedVal, prevInvested, totalInvested, 250, formatCurrency);
+            animateValue(barGainedVal, prevWealth, currentBalance, 250, formatCurrency);
+        }
+
+        prevWealth = currentBalance;
+        prevInvested = totalInvested;
+        prevGained = wealthGained;
 
         // Set heights based on ratios
         const maxVal = Math.max(totalInvested, currentBalance);
@@ -158,11 +205,11 @@ function initSipCalculator() {
         }
     }
 
-    dailySipInput.addEventListener("input", calculateSIP);
-    yearsInput.addEventListener("input", calculateSIP);
+    dailySipInput.addEventListener("input", () => calculateSIP(false));
+    yearsInput.addEventListener("input", () => calculateSIP(false));
 
-    // Initial calculation
-    calculateSIP();
+    // Initial calculation (skip transition on page load)
+    calculateSIP(true);
 }
 
 /* 4. Audience Segment Tabs */
@@ -198,6 +245,8 @@ function initLamfCalculator() {
 
     if (!portfolioSlider || !portfolioValText || !creditLimitText) return;
 
+    let prevLimit = 0;
+
     function formatCurrency(num) {
         if (num >= 10000000) { // Crore
             return "₹" + (num / 10000000).toFixed(2) + " Cr";
@@ -210,18 +259,25 @@ function initLamfCalculator() {
         }
     }
 
-    function calculateCreditLimit() {
+    function calculateCreditLimit(isInitial = false) {
         const portfolioValue = parseFloat(portfolioSlider.value);
         const creditLimit = portfolioValue * 0.80; // 80% LTV limit
 
         portfolioValText.textContent = "₹" + portfolioValue.toLocaleString("en-IN");
-        creditLimitText.textContent = formatCurrency(creditLimit);
+        
+        if (isInitial) {
+            creditLimitText.textContent = formatCurrency(creditLimit);
+        } else {
+            animateValue(creditLimitText, prevLimit, creditLimit, 250, formatCurrency);
+        }
+
+        prevLimit = creditLimit;
     }
 
-    portfolioSlider.addEventListener("input", calculateCreditLimit);
+    portfolioSlider.addEventListener("input", () => calculateCreditLimit(false));
 
     // Initial calculation
-    calculateCreditLimit();
+    calculateCreditLimit(true);
 }
 
 /* 6. Testimonials Autoscroll & Hover Pause */
@@ -309,6 +365,202 @@ function initFaqAccordion() {
                 item.classList.add("active");
                 answer.style.maxHeight = answer.scrollHeight + "px";
             }
+        });
+    });
+}
+
+/* -------------------------------------------------------------------------
+   Premium Enhancements Implementations
+   ------------------------------------------------------------------------- */
+
+/* 8. HTML5 Canvas Particles Background */
+function initParticlesBackground() {
+    const canvas = document.getElementById("particles-canvas");
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    
+    let particlesArray = [];
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    const mouse = {
+        x: null,
+        y: null,
+        radius: 120
+    };
+
+    window.addEventListener("mousemove", (e) => {
+        mouse.x = e.x;
+        mouse.y = e.y;
+    });
+
+    window.addEventListener("mouseout", () => {
+        mouse.x = null;
+        mouse.y = null;
+    });
+
+    window.addEventListener("resize", () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        initParticles();
+    });
+
+    class Particle {
+        constructor(x, y, directionX, directionY, size, color) {
+            this.x = x;
+            this.y = y;
+            this.directionX = directionX;
+            this.directionY = directionY;
+            this.size = size;
+            this.color = color;
+        }
+
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+        }
+
+        update() {
+            // Check boundary collisions
+            if (this.x > width || this.x < 0) {
+                this.directionX = -this.directionX;
+            }
+            if (this.y > height || this.y < 0) {
+                this.directionY = -this.directionY;
+            }
+
+            // Mouse interact (push away)
+            if (mouse.x !== null && mouse.y !== null) {
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < mouse.radius + this.size) {
+                    if (mouse.x < this.x && this.x < width - this.size * 10) {
+                        this.x += 3;
+                    }
+                    if (mouse.x > this.x && this.x > this.size * 10) {
+                        this.x -= 3;
+                    }
+                    if (mouse.y < this.y && this.y < height - this.size * 10) {
+                        this.y += 3;
+                    }
+                    if (mouse.y > this.y && this.y > this.size * 10) {
+                        this.y -= 3;
+                    }
+                }
+            }
+
+            // Move particle
+            this.x += this.directionX * 0.8;
+            this.y += this.directionY * 0.8;
+            this.draw();
+        }
+    }
+
+    function initParticles() {
+        particlesArray = [];
+        let numberOfParticles = Math.floor((width * height) / 18000);
+        // Cap particles for performance
+        numberOfParticles = Math.min(numberOfParticles, 60);
+
+        for (let i = 0; i < numberOfParticles; i++) {
+            let size = (Math.random() * 2) + 1;
+            let x = (Math.random() * ((width - size * 2) - (size * 2)) + size * 2);
+            let y = (Math.random() * ((height - size * 2) - (size * 2)) + size * 2);
+            let directionX = (Math.random() * 0.6) - 0.3;
+            let directionY = (Math.random() * 0.6) - 0.3;
+            // Neon Green color matching our accent
+            let color = "rgba(159, 232, 112, 0.22)";
+
+            particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+        }
+    }
+
+    // Connect particles close to each other
+    function connect() {
+        let opacityValue = 1;
+        for (let a = 0; a < particlesArray.length; a++) {
+            for (let b = a; b < particlesArray.length; b++) {
+                let dx = particlesArray[a].x - particlesArray[b].x;
+                let dy = particlesArray[a].y - particlesArray[b].y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < 110) {
+                    opacityValue = 1 - (distance / 110);
+                    ctx.strokeStyle = `rgba(159, 232, 112, ${opacityValue * 0.12})`;
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                    ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, width, height);
+        for (let i = 0; i < particlesArray.length; i++) {
+            particlesArray[i].update();
+        }
+        connect();
+        requestAnimationFrame(animate);
+    }
+
+    initParticles();
+    animate();
+}
+
+/* 9. Scroll Reveal triggers */
+function initScrollReveal() {
+    const sections = document.querySelectorAll("section");
+    const cards = document.querySelectorAll(".feature-card, .testimonial-card, .comp-box, .calculator-card, .calculator-results-card, .step-card, .table-container, .faq-item");
+
+    // Add reveal class to all elements dynamically
+    sections.forEach(s => s.classList.add("reveal"));
+    cards.forEach(c => c.classList.add("reveal"));
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("active-reveal");
+                // Stop observing once revealed
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.12,
+        rootMargin: "0px 0px -50px 0px"
+    });
+
+    sections.forEach(s => revealObserver.observe(s));
+    cards.forEach(c => revealObserver.observe(c));
+}
+
+/* 10. 3D Card Hover Tilt Interaction */
+function init3dTilt() {
+    const tiltElements = document.querySelectorAll(".feature-card, .testimonial-card, .comp-box, .calculator-card, .calculator-results-card, .cta-card");
+    
+    // Add tilt-card class dynamically
+    tiltElements.forEach(el => el.classList.add("tilt-card"));
+
+    tiltElements.forEach(card => {
+        card.addEventListener("mousemove", (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left - (rect.width / 2);
+            const y = e.clientY - rect.top - (rect.height / 2);
+            
+            // Limit tilt angles (max 10 degrees)
+            const rotateX = -(y / (rect.height / 2)) * 10;
+            const rotateY = (x / (rect.width / 2)) * 10;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+            card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)";
         });
     });
 }
