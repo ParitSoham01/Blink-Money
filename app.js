@@ -284,65 +284,8 @@ function initLamfCalculator() {
 
 /* 6. Testimonials Autoscroll & Hover Pause */
 function initTestimonialsAutoscroll() {
-    const track = document.getElementById("testimonials-track-el");
-    if (!track) return;
-
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-    let autoScrollInterval;
-
-    // Manual Drag/Swipe support
-    track.addEventListener("mousedown", (e) => {
-        isDown = true;
-        startX = e.pageX - track.offsetLeft;
-        scrollLeft = track.scrollLeft;
-        clearInterval(autoScrollInterval);
-    });
-
-    track.addEventListener("mouseleave", () => {
-        isDown = false;
-        startAutoscroll();
-    });
-
-    track.addEventListener("mouseup", () => {
-        isDown = false;
-        startAutoscroll();
-    });
-
-    track.addEventListener("mousemove", (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - track.offsetLeft;
-        const walk = (x - startX) * 1.5; // scroll speed
-        track.scrollLeft = scrollLeft - walk;
-    });
-
-    // Auto-Scroll Loop
-    function startAutoscroll() {
-        clearInterval(autoScrollInterval);
-        autoScrollInterval = setInterval(() => {
-            if (isDown) return;
-            const maxScroll = track.scrollWidth - track.clientWidth;
-            if (track.scrollLeft >= maxScroll - 1) {
-                // Smooth loop back to start
-                track.scrollTo({ left: 0, behavior: "smooth" });
-            } else {
-                track.scrollBy({ left: 240, behavior: "smooth" });
-            }
-        }, 5000);
-    }
-
-    // Touch events for mobile
-    track.addEventListener("touchstart", () => {
-        clearInterval(autoScrollInterval);
-    });
-
-    track.addEventListener("touchend", () => {
-        startAutoscroll();
-    });
-
-    startAutoscroll();
+    // Handled via high-performance infinite CSS marquee layout
+    return;
 }
 
 /* 7. FAQ Accordion Expanding panels */

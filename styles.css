@@ -1129,11 +1129,28 @@ section {
 .testimonials-track {
     display: flex;
     gap: 24px;
-    overflow-x: auto;
-    padding-bottom: 20px;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: thin;
-    scrollbar-color: var(--border-glass) transparent;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee-group {
+    display: flex;
+    gap: 24px;
+    animation: testimonial-marquee 32s linear infinite;
+    flex-shrink: 0;
+    min-width: 100%;
+}
+
+.testimonials-track:hover .marquee-group {
+    animation-play-state: paused;
+}
+
+@keyframes testimonial-marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-100% - 24px)); }
 }
 
 .testimonial-card {
