@@ -1824,16 +1824,43 @@ section {
 /* Leadership & Founders Section */
 .leadership-section {
     border-bottom: 1px solid var(--border-glass);
+    overflow: hidden;
 }
 
-.leadership-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
+.leadership-slider-container {
     width: 100%;
+    margin-top: 30px;
+}
+
+.leadership-track {
+    display: flex;
+    gap: 28px;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.leader-marquee-group {
+    display: flex;
+    gap: 28px;
+    animation: leader-marquee 30s linear infinite;
+    flex-shrink: 0;
+    min-width: 100%;
+}
+
+.leadership-track:hover .leader-marquee-group {
+    animation-play-state: paused;
+}
+
+@keyframes leader-marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-100% - 28px)); }
 }
 
 .leader-card {
+    flex: 0 0 540px;
     display: flex;
     gap: 24px;
     align-items: flex-start;
@@ -1842,7 +1869,6 @@ section {
 }
 
 .leader-card:hover {
-    transform: translateY(-5px);
     border-color: rgba(159, 232, 112, 0.25);
     box-shadow: 0 10px 25px rgba(159, 232, 112, 0.05);
 }
@@ -1871,6 +1897,7 @@ section {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    text-align: left;
 }
 
 .leader-header {
@@ -1908,21 +1935,19 @@ section {
     line-height: 1.5;
 }
 
-/* Responsive Leadership Section */
-@media (max-width: 992px) {
-    .leadership-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-}
-
-@media (max-width: 576px) {
+/* Mobile responsive leader cards */
+@media (max-width: 768px) {
     .leader-card {
+        flex: 0 0 320px;
         flex-direction: column;
         align-items: center;
         text-align: center;
     }
     
+    .leader-content {
+        text-align: center;
+    }
+
     .leader-quote {
         border-left: none;
         border-top: 1.5px solid var(--neon-green);
@@ -1930,4 +1955,3 @@ section {
         padding-top: 8px;
     }
 }
-
