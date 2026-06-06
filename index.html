@@ -69,178 +69,85 @@
         <div class="hero-wrapper">
             <!-- Animated video background limited to hero section -->
             <div class="video-bg-container">
-                <video autoplay loop muted playsinline class="video-bg">
+                <video autoplay loop muted playsinline preload="auto" poster="hero-poster.png" class="video-bg">
                     <source src="background.mp4" type="video/mp4">
+                    <source src="background.webm" type="video/webm">
                 </video>
                 <div class="video-overlay"></div>
             </div>
 
-            <!-- Hero Slider Section -->
+            <!-- Redesigned Stripe-style Hero Section -->
             <section class="hero-section">
-            <div class="carousel-container">
-                <div class="carousel-track">
-                    <!-- Slide 1: Liquid Wealth Account -->
-                    <div class="hero-slide active">
-                        <div class="slide-content">
-                            <div class="badge-accent">India's First</div>
-                            <h1 class="hero-title">Liquid Wealth <br><span class="italic-highlight">Account</span></h1>
-                            <p class="hero-subtitle">One account. Save, grow, borrow, keep growing. Your wealth stays liquid, accessible anytime, anywhere.</p>
-                            <div class="badge-pill">Set-up in 4 mins · 100% digital</div>
-                        </div>
-                        <div class="slide-visual">
-                            <div class="orbit-visual">
-                                <div class="orbit-ring circle-spin-slow"></div>
-                                <div class="orbit-center">
-                                    <div class="wealth-avatar"></div>
-                                </div>
-                                <div class="orbit-slot" style="--angle: 0deg;"><span class="glass-tag">Stocks</span></div>
-                                <div class="orbit-slot" style="--angle: 72deg;"><span class="glass-tag">Gold</span></div>
-                                <div class="orbit-slot" style="--angle: 144deg;"><span class="glass-tag">FD</span></div>
-                                <div class="orbit-slot" style="--angle: 216deg;"><span class="glass-tag">Real Estate</span></div>
-                                <div class="orbit-slot" style="--angle: 288deg;"><span class="glass-tag">F&amp;O</span></div>
-                            </div>
+                <div class="hero-grid">
+                    <!-- Left Column: Copy & Actions -->
+                    <div class="hero-left-col">
+                        <span class="badge-accent">Smart Investing</span>
+                        <h1 class="hero-title-main">Invest Smarter.<br><span class="italic-highlight">Grow Faster.</span></h1>
+                        <p class="hero-subtext-main">India's modern wealth platform for SIPs, Mutual Funds, Fixed Deposits and intelligent investing.</p>
+                        <div class="hero-ctas-row">
+                            <a href="#save" class="btn btn-primary btn-lg btn-glow">Start Investing</a>
+                            <a href="#how-it-works" class="btn btn-secondary btn-lg">Learn More</a>
                         </div>
                     </div>
 
-                    <!-- Slide 2: Grow & Borrow -->
-                    <div class="hero-slide">
-                        <div class="slide-content">
-                            <div class="badge-accent">Grow &amp; Borrow</div>
-                            <h2 class="hero-title">Compounding <br><span class="italic-highlight">Never Stops</span></h2>
-                            <p class="hero-subtitle">Your investments keep growing at ~15% p.a., even when you borrow cash against them instantly at 9.99% p.a.</p>
-                            <div class="hero-badges-row">
-                                <span class="glass-tag tag-green">Save @ 15% p.a.*</span>
-                                <span class="glass-tag tag-green">Borrow @ 9.99% p.a.*</span>
-                            </div>
-                        </div>
-                        <div class="slide-visual">
-                            <div class="infinity-track-wrap">
-                                <div class="infinity-loop-svg-container">
-                                    <svg viewBox="0 0 300 120" class="infinity-svg">
-                                        <!-- Infinity path -->
-                                        <path d="M 75,60 C 20,110 20,10 75,60 C 130,110 230,110 225,60 C 220,10 120,10 75,60 Z" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="6" />
-                                        <path d="M 75,60 C 20,110 20,10 75,60 C 130,110 230,110 225,60 C 220,10 120,10 75,60 Z" fill="none" class="infinity-path-glow" stroke="#9FE870" stroke-width="2" />
+                    <!-- Right Column: Interactive stats cards -->
+                    <div class="hero-right-col">
+                        <div class="stats-cards-grid">
+                            <!-- Card 1: Total Wealth -->
+                            <div class="stat-glass-card hover-glow" id="stat-card-wealth">
+                                <div class="stat-icon-wrap">
+                                    <svg viewBox="0 0 24 24" class="stat-icon-svg" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" fill="none" stroke="#9FE870" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
-                                    <div class="infinity-ball ball-green"></div>
-                                    <div class="infinity-ball ball-yellow"></div>
-                                    <div class="infinity-ball ball-grey"></div>
                                 </div>
-                                <div class="floating-badge text-center">
-                                    <span class="glass-tag tag-green">✦ Grow ✦ Borrow ✦ Still Grow</span>
+                                <div class="stat-numbers-wrap">
+                                    <span class="stat-value" id="hero-stat-wealth" data-value="12450">₹0 Cr+</span>
+                                    <span class="stat-label">Total Wealth Created</span>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <!-- Slide 3: Simple 1-Click Investing -->
-                    <div class="hero-slide">
-                        <div class="slide-content">
-                            <div class="badge-accent">No Complexity</div>
-                            <h2 class="hero-title">Investing in <br><span class="italic-highlight">One Tap</span></h2>
-                            <p class="hero-subtitle">One app, one tap. A diversified portfolio split across Stocks, FD, and Gold automatically managed for you.</p>
-                            <div class="badge-pill">Starts at ₹21/day · Auto-allocation</div>
-                        </div>
-                        <div class="slide-visual">
-                            <div class="phone-mockup">
-                                <div class="phone-inner">
-                                    <div class="portfolio-card">
-                                        <div class="card-header">
-                                            <span>Smart Portfolio</span>
-                                            <span class="compounding-badge">Daily Compounding</span>
-                                        </div>
-                                        <div class="allocation-list">
-                                            <div class="allocation-item">
-                                                <div class="asset-info">
-                                                    <span class="dot" style="background: #3A4F6A;"></span>
-                                                    <span>Stocks</span>
-                                                </div>
-                                                <span class="weight font-bold">65.14%</span>
-                                            </div>
-                                            <div class="allocation-item">
-                                                <div class="asset-info">
-                                                    <span class="dot" style="background: #8B6A4E;"></span>
-                                                    <span>FD (Debt)</span>
-                                                </div>
-                                                <span class="weight font-bold">14.50%</span>
-                                            </div>
-                                            <div class="allocation-item">
-                                                <div class="asset-info">
-                                                    <span class="dot" style="background: #C2B06F;"></span>
-                                                    <span>Gold</span>
-                                                </div>
-                                                <span class="weight font-bold">8.75%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mockup-indicator">
-                                        <span class="glass-tag">Stocks + FD + Gold</span>
-                                    </div>
+                            <!-- Card 2: Average Returns -->
+                            <div class="stat-glass-card hover-glow" id="stat-card-returns">
+                                <div class="stat-icon-wrap">
+                                    <svg viewBox="0 0 24 24" class="stat-icon-svg" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M22 12A10 10 0 1 1 12 2M22 2L12 12M22 2h-6M22 2v6" fill="none" stroke="#9FE870" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="stat-numbers-wrap">
+                                    <span class="stat-value" id="hero-stat-returns" data-value="15.4">0% p.a.</span>
+                                    <span class="stat-label">Average Returns</span>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <!-- Slide 4: Cash in Minutes (LAMF) -->
-                    <div class="hero-slide">
-                        <div class="slide-content">
-                            <div class="badge-accent">Instant Liquidity</div>
-                            <h2 class="hero-title">Use Your <br><span class="italic-highlight">Money Today</span></h2>
-                            <p class="hero-subtitle">Pledge your portfolio digitally and get instant cash in your bank in minutes. No selling, no tax load, no paperwork.</p>
-                            <div class="hero-badges-row">
-                                <span class="glass-tag tag-green">Zero Selling</span>
-                                <span class="glass-tag tag-green">Keep Compounding</span>
-                            </div>
-                        </div>
-                        <div class="slide-visual">
-                            <div class="cash-visual">
-                                <div class="cash-card">
-                                    <div class="cash-card-glow"></div>
-                                    <span class="cash-title">Instant Credit Unlocked</span>
-                                    <span class="cash-rate">9.99% p.a.*</span>
-                                    <span class="cash-subtext">No EMI, interest runs only on what you use</span>
+                            <!-- Card 3: Active Investors -->
+                            <div class="stat-glass-card hover-glow" id="stat-card-investors">
+                                <div class="stat-icon-wrap">
+                                    <svg viewBox="0 0 24 24" class="stat-icon-svg" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" fill="none" stroke="#9FE870" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
                                 </div>
-                                <div class="floating-badge" style="top: 10%; left: -10%;">
-                                    <span class="glass-tag tag-green">Cash in 5 Mins</span>
+                                <div class="stat-numbers-wrap">
+                                    <span class="stat-value" id="hero-stat-investors" data-value="4.8">0 L+</span>
+                                    <span class="stat-label">Active Investors</span>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <!-- Slide 5: Better than FD -->
-                    <div class="hero-slide">
-                        <div class="slide-content">
-                            <div class="badge-accent">High Returns</div>
-                            <h2 class="hero-title">Better Than <br><span class="italic-highlight">Your Dad's FD</span></h2>
-                            <p class="hero-subtitle">Why settle for 3% in savings or 6% in locked FDs? Grow your wealth at ~15% p.a.* historical returns with expert-managed portfolios.</p>
-                            <div class="badge-pill">Expert-managed · Zero lock-in · No penalties</div>
-                        </div>
-                        <div class="slide-visual">
-                            <div class="comparison-visual">
-                                <div class="comp-box dad-fd">
-                                    <span class="box-label">Dad's FD</span>
-                                    <span class="box-val text-red">6-7% p.a.</span>
-                                    <span class="box-sub">Locked. Inflation loss.</span>
+                            <!-- Card 4: Assets Under Management -->
+                            <div class="stat-glass-card hover-glow" id="stat-card-aum">
+                                <div class="stat-icon-wrap">
+                                    <svg viewBox="0 0 24 24" class="stat-icon-svg" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16zM3.27 6.96L12 12.01l8.73-5.05M12 22.08V12" fill="none" stroke="#9FE870" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
                                 </div>
-                                <div class="comp-box blink-wealth">
-                                    <span class="box-label">BlinkMoney</span>
-                                    <span class="box-val text-green">~15% p.a.*</span>
-                                    <span class="box-sub">Liquid. Compounding.</span>
+                                <div class="stat-numbers-wrap">
+                                    <span class="stat-value" id="hero-stat-aum" data-value="8920">₹0 Cr+</span>
+                                    <span class="stat-label">Assets Under Management</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Carousel Controls -->
-                <div class="carousel-indicators">
-                    <span class="dot-indicator active" data-slide="0"></span>
-                    <span class="dot-indicator" data-slide="1"></span>
-                    <span class="dot-indicator" data-slide="2"></span>
-                    <span class="dot-indicator" data-slide="3"></span>
-                    <span class="dot-indicator" data-slide="4"></span>
-                </div>
-            </div>
-        </section>
+            </section>
     </div> <!-- Close hero-wrapper -->
 
         <!-- Partner Marquee Section -->

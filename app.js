@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
     initParticlesBackground();
     initScrollReveal();
     init3dTilt();
+    initHeroVideoAndStats();
+    initHeroParallax();
 });
 
 /* 1. Mobile Navigation Menu Toggle */
@@ -562,5 +564,130 @@ function init3dTilt() {
         card.addEventListener("mouseleave", () => {
             card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)";
         });
+    });
+}
+
+/* 11. Hero Video background & Intersection Ticker counters */
+function initHeroVideoAndStats() {
+    const video = document.querySelector(".video-bg");
+    const wealthEl = document.getElementById("hero-stat-wealth");
+    const returnsEl = document.getElementById("hero-stat-returns");
+    const investorsEl = document.getElementById("hero-stat-investors");
+    const aumEl = document.getElementById("hero-stat-aum");
+    const statsGrid = document.querySelector(".stats-cards-grid");
+
+    if (video) {
+        // Play/Pause based on Tab visibility
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+                video.pause();
+            } else {
+                video.play().catch(err => console.log("Video play interrupted/blocked: ", err));
+            }
+        });
+
+        // Play/Pause based on viewport intersection (lazy-play)
+        const heroWrapper = document.querySelector(".hero-wrapper");
+        if (heroWrapper && 'IntersectionObserver' in window) {
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        video.play().catch(err => {});
+                    } else {
+                        video.pause();
+                    }
+                });
+            }, { threshold: 0.05 });
+            videoObserver.observe(heroWrapper);
+        }
+    }
+
+    // Intersection Ticker for Stat Cards
+    if (statsGrid && 'IntersectionObserver' in window) {
+        let animated = false;
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !animated) {
+                    animated = true;
+
+                    // 1. Wealth: 0 -> 12450 Cr
+                    if (wealthEl) {
+                         const val = parseFloat(wealthEl.getAttribute("data-value"));
+                         animateValue(wealthEl, 0, val, 1800, (v) => {
+                             return "₹" + Math.round(v).toLocaleString("en-IN") + " Cr+";
+                         });
+                    }
+                    // 2. Returns: 0 -> 15.4%
+                    if (returnsEl) {
+                         const val = parseFloat(returnsEl.getAttribute("data-value"));
+                         animateValue(returnsEl, 0, val, 1500, (v) => {
+                             return v.toFixed(1) + "% p.a.";
+                         });
+                    }
+                    // 3. Investors: 0 -> 4.8 L
+                    if (investorsEl) {
+                         const val = parseFloat(investorsEl.getAttribute("data-value"));
+                         animateValue(investorsEl, 0, val, 1600, (v) => {
+                             return v.toFixed(1) + " L+";
+                         });
+                    }
+                    // 4. AUM: 0 -> 8920 Cr
+                    if (aumEl) {
+                         const val = parseFloat(aumEl.getAttribute("data-value"));
+                         animateValue(aumEl, 0, val, 1800, (v) => {
+                             return "₹" + Math.round(v).toLocaleString("en-IN") + " Cr+";
+                         });
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+
+        statsObserver.observe(statsGrid);
+    }
+}
+
+/* 12. Hero Section Mouse Parallax Interaction */
+function initHeroParallax() {
+    const heroWrapper = document.querySelector(".hero-wrapper");
+    const heroLeft = document.querySelector(".hero-left-col");
+    const heroRight = document.querySelector(".hero-right-col");
+    const videoBg = document.querySelector(".video-bg-container");
+
+    if (!heroWrapper) return;
+
+    heroWrapper.addEventListener("mousemove", (e) => {
+        const rect = heroWrapper.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const percentX = (x - centerX) / centerX;
+        const percentY = (y - centerY) / centerY;
+
+        // Move columns in opposite direction of mouse movement to create depth
+        if (heroLeft) {
+            heroLeft.style.transform = `translate(${percentX * -10}px, ${percentY * -10}px)`;
+        }
+        if (heroRight) {
+            heroRight.style.transform = `translate(${percentX * -20}px, ${percentY * -20}px)`;
+        }
+        if (videoBg) {
+            // Translate video background in the same direction to increase parallax contrast
+            videoBg.style.transform = `translate(${percentX * 12}px, ${percentY * 12}px) scale(1.05)`;
+        }
+    });
+
+    heroWrapper.addEventListener("mouseleave", () => {
+        if (heroLeft) {
+            heroLeft.style.transform = "translate(0, 0)";
+        }
+        if (heroRight) {
+            heroRight.style.transform = "translate(0, 0)";
+        }
+        if (videoBg) {
+            videoBg.style.transform = "translate(0, 0) scale(1)";
+        }
     });
 }
