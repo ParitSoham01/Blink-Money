@@ -19,14 +19,6 @@
     <!-- Canvas for interactive particle background -->
     <canvas id="particles-canvas"></canvas>
 
-    <!-- Animated video background -->
-    <div class="video-bg-container">
-        <video autoplay loop muted playsinline class="video-bg">
-            <source src="background.mp4" type="video/mp4">
-        </video>
-        <div class="video-overlay"></div>
-    </div>
-
     <!-- Top-level Navigation -->
     <header class="app-header">
         <div class="header-container">
@@ -73,8 +65,18 @@
 
     <!-- Main Content -->
     <main>
-        <!-- Hero Slider Section -->
-        <section class="hero-section">
+        <!-- Hero Wrapper for Full-Bleed Video Background -->
+        <div class="hero-wrapper">
+            <!-- Animated video background limited to hero section -->
+            <div class="video-bg-container">
+                <video autoplay loop muted playsinline class="video-bg">
+                    <source src="background.mp4" type="video/mp4">
+                </video>
+                <div class="video-overlay"></div>
+            </div>
+
+            <!-- Hero Slider Section -->
+            <section class="hero-section">
             <div class="carousel-container">
                 <div class="carousel-track">
                     <!-- Slide 1: Liquid Wealth Account -->
@@ -239,6 +241,7 @@
                 </div>
             </div>
         </section>
+    </div> <!-- Close hero-wrapper -->
 
         <!-- Partner Marquee Section -->
         <section class="partner-marquee-section">
