@@ -2047,3 +2047,26 @@ section {
         transform: translateY(0) rotate(0deg) scale(1);
     }
 }
+
+/* Developer Signature */
+.developer-signature {
+    margin-top: 8px;
+    font-size: 11px;
+    color: var(--text-muted);
+    font-family: var(--font-sans);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.developer-signature .signature-name {
+    color: var(--text-secondary);
+    font-weight: 600;
+    transition: var(--transition-smooth);
+    position: relative;
+    display: inline-block;
+}
+
+.developer-signature:hover .signature-name {
+    color: var(--neon-green);
+    text-shadow: 0 0 8px rgba(159, 232, 112, 0.4);
+}
